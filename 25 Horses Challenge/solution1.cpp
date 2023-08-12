@@ -1,13 +1,13 @@
 #include <iostream>
 
-// Global-Variables
+// Global-Vars
 int totalRaces = 0;
 int datasetArray [5][5];
 
 /*
 	Function Proto-types
 */
-int swap(int array[], int indexA, int indexB);
+int generateDataset ();
 
 // generate Dataset
 int generateDataset (){
@@ -55,35 +55,24 @@ int solution(){
 	args: 1 group of 5 */
 int *runRace(int group[]){
 	
-//	for(int i=0; i < 5; i++){
-//		
-//		int j = 0;
-//		while(j < 5){
-//			
-//			if(group[j+1] < group[j]){
-//				swap(group, j, j+1);
-//			}
-//			
-//			j++;
-//		}
-//	}
+	int temp;
+	for(int i=1; i < 5; i++){
+		
+		int j = i-1;
+		while(j < 4){
+			
+			if(group[i] < group[j]){
+				
+				temp = group[j];
+				group[j] = group[i];
+				group[i] = temp;	
+			}
+			j++;
+		}
+	}
 	
 	return group;
 }
-
-/* swap two elements (int) 
- args: targetArray, index-a, index-b*/
-
-int *swap(int array[], int indexA, int indexB){
-	
-//	int temp = array[indexA];
-//	array[indexA] = array[indexB];
-//	array[indexB] = temp;
-	
-	return array;
-}
- 
-
 
 /*
 	For dev-Environment
@@ -93,7 +82,7 @@ void displayArray(int array[], int size){
 	std::cout<<"-Begin-"<<std::endl;
 	
 	for(int i=0; i < size; i++){
-		std::cout<<array[i];
+		std::cout<<array[i]<<std::endl;
 	}
 	
 	std::cout<<"-End-"<<std::endl;
@@ -110,7 +99,7 @@ int main(){
 
 	int testArray[5] = {2,1,9,76,4};
 	
-	int *result = swap(testArray, 1, 0);
+	int *result = runRace(testArray);
 	
 	displayArray(result, 5);
 
