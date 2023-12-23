@@ -1,1 +1,1 @@
-# Programming Logic Challenges
+# Dynamic Programming Challenges
